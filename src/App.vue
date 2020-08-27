@@ -1,15 +1,41 @@
 <template>
   <div id="app">
+    <el-horizontal-timeline>
+      <el-horizontal-timeline-item 
+        v-for="(activity, i) in activities"
+        :key="i"
+        :timestamp="activity.timestamp"
+      >
+        {{activity.content}}
+      </el-horizontal-timeline-item>
+    </el-horizontal-timeline>
   </div>
 </template>
 
 <script>
-import HorizontalTimeline from './components/HorizontalTimeline.vue'
+import ElHorizontalTimeline from './components/ElHorizontalTimeline.vue'
+import ElHorizontalTimelineItem from './components/ElHorizontalTimelineItem.vue'
 
 export default {
   name: 'App',
   components: {
-    HorizontalTimeline
+    ElHorizontalTimeline,
+    ElHorizontalTimelineItem
+  },
+
+  data (){
+    return {
+      activities: [{
+        content: 'Event start',
+        timestamp: '2018-04-15'
+      }, {
+        content: 'Approved',
+        timestamp: '2018-04-13'
+      }, {
+        content: 'Success',
+        timestamp: '2018-04-11'
+      }]
+    }
   }
 }
 </script>
