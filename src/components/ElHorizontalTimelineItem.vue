@@ -3,12 +3,24 @@
     <div v-if="placement == 'top'">
       <p v-if="!hideTimestamp">{{timestamp}}</p>
       <el-tooltip content="Tooltip">
-        <div class="timeline-item" />
+        <div :class="{
+          'timeline-item': size == 'normal',
+          'timeline-item-large': size == 'large',
+          'numbered-node': icon == undefined
+        }">
+          <i v-if="icon" :class="[icon]" />
+        </div>
       </el-tooltip>
     </div>
     <div v-else>
       <el-tooltip :content="content">
-        <div class="timeline-item" />
+        <div :class="{
+          'timeline-item': size == 'normal',
+          'timeline-item-large': size == 'large',
+          'numbered-node': icon == undefined
+        }">
+          <i v-if="icon" :class="[icon]" />
+        </div>
       </el-tooltip>
       <p v-if="!hideTimestamp">{{timestamp}}</p>
     </div>
@@ -16,6 +28,8 @@
 </template>
 
 <script>
+import 'element-ui/lib/theme-chalk/index.css';
+
 export default {
   name: 'el-horizontal-timeline-item',
 
@@ -25,7 +39,10 @@ export default {
     "placement": String,
     "type": String,
     "color": String,
-    "size": String,
+    "size": {
+      type: String,
+      default : 'normal'
+    },
     "icon": String
   },
   computed: {
@@ -54,8 +71,6 @@ export default {
   color: white;
   background: dodgerblue;
   border-radius: 50%;
-  counter-increment: stepCount;
-  content: counter(stepCount); 
   height: 2em;
   left: 0em;
   right: 0em;
@@ -64,6 +79,10 @@ export default {
   text-align: center;
   top: -.85em;
   width: 2em;
+}
+.numbered-node::before {
+  counter-increment: stepCount;
+  content: counter(stepCount);
 }
 .timeline-item.active {
   background-color: lightblue;

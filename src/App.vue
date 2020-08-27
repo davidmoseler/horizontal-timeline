@@ -5,6 +5,7 @@
         v-for="(activity, i) in activities"
         :key="i"
         :timestamp="activity.timestamp"
+        icon="el-icon-delete"
       >
         {{activity.content}}
       </el-horizontal-timeline-item>
