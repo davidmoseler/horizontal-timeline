@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div class="timeline-item">
-    </div>
     <div v-if="placement == 'top'">
       <p v-if="!hideTimestamp">{{timestamp}}</p>
-      <slot />
+      <el-tooltip content="Tooltip">
+        <div class="timeline-item" />
+      </el-tooltip>
     </div>
     <div v-else>
-      <slot />
+      <el-tooltip :content="content">
+        <div class="timeline-item" />
+      </el-tooltip>
       <p v-if="!hideTimestamp">{{timestamp}}</p>
     </div>
   </div>
@@ -25,7 +27,11 @@ export default {
     "color": String,
     "size": String,
     "icon": String
-
+  },
+  computed: {
+    content() {
+      return this.$slots.default[0].text
+    }
   }
 }
 </script>
