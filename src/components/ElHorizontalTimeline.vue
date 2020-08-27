@@ -1,5 +1,5 @@
 <template>
-  <div class="timeline">
+  <div class="timeline" :class="{'reverse': reverse}">
     <slot />
   </div>
 </template>
@@ -23,5 +23,9 @@ export default {
   display: flex;
   justify-content: space-around;
   font-size: 1.3em;
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 </style>
