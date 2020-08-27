@@ -2,8 +2,14 @@
   <div>
     <div class="timeline-item">
     </div>
-    <slot />
-    <p v-if="!hideTimestamp">{{timestamp}}</p>
+    <div v-if="placement == 'top'">
+      <p v-if="!hideTimestamp">{{timestamp}}</p>
+      <slot />
+    </div>
+    <div v-else>
+      <slot />
+      <p v-if="!hideTimestamp">{{timestamp}}</p>
+    </div>
   </div>
 </template>
 
