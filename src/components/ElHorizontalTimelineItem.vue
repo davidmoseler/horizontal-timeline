@@ -1,9 +1,9 @@
 <template>
-  <div class="flexpurposes" :style="cssVars">
+  <div class="timeline-item" :style="cssVars">
     <p v-if="!hideTimestamp && placement == 'top'">{{timestamp}}</p>
-    <el-tooltip content="Tooltip">
+    <el-tooltip :content="content">
       <div :class="{
-        'timeline-item': true,
+        'node': true,
         'numbered-node': icon == undefined
       }">
         <div>
@@ -24,7 +24,10 @@ export default {
   props: {
     "timestamp": String,
     "hide-timestamp": Boolean,
-    "placement": String,
+    "placement": {
+      type: String,
+      default: 'bottom'
+    },
     "type": String,
     "color": {
       type: String,
@@ -57,15 +60,15 @@ export default {
 </script>
 
 <style scoped>
-.flexpurposes {
+.timeline-item {
   flex-grow: 1;
 }
-.timeline-item {
+.node {
   display: flex;
   justify-content: center;
   position: relative;
 }
-.timeline-item div {
+.node div {
   color: white;
   background: var(--node-color);
   border-radius: 50%;
@@ -74,7 +77,7 @@ export default {
   width: var(--node-size);
   z-index: 1;
 }
-.timeline-item::before{
+.node::before{
   color: white;
   background: lightgrey;
   height: .3em;
@@ -84,11 +87,11 @@ export default {
   width: 100%;
   content: "";
 }
-.flexpurposes:first-child .timeline-item::before {
+.timeline-item:first-child .node::before {
   width: 50%;
   left: 50%;
 }
-.flexpurposes:last-child .timeline-item::before {
+.timeline-item:last-child .node::before {
   width: 50%;
   right: 50%;
 }
@@ -97,10 +100,6 @@ export default {
 }
 .numbered-node div::before {
   content: counter(stepCount);
-}
-.timeline.highlight-active .timeline-item.active::before {
-  font-size: 1.6em;
-  background: maroon;
 }
 p {
   margin: .3em;
