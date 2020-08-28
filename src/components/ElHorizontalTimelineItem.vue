@@ -4,8 +4,7 @@
       <p v-if="!hideTimestamp">{{timestamp}}</p>
       <el-tooltip content="Tooltip">
         <div :class="{
-          'timeline-item': size == 'normal',
-          'timeline-item-large': size == 'large',
+          'timeline-item': true,
           'numbered-node': icon == undefined
         }">
           <div>
@@ -17,8 +16,7 @@
     <template v-else>
       <el-tooltip :content="content">
         <div :class="{
-          'timeline-item': size == 'normal',
-          'timeline-item-large': size == 'large',
+          'timeline-item': true,
           'numbered-node': icon == undefined
         }">
           <div>
@@ -54,8 +52,14 @@ export default {
       return this.$slots.default[0].text
     },
     cssVars() {
+      let nodeSize;
+      if(this.size == 'normal'){
+        nodeSize = '2em'
+      } else {
+        nodeSize = '3em'
+      }
       return {
-        '--node-size': '2em'
+        '--node-size': nodeSize
       }
     }
   }

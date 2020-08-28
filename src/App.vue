@@ -5,7 +5,7 @@
         v-for="(activity, i) in activities"
         :key="i"
         :timestamp="activity.timestamp"
-        size="normal"
+        :size="activity.size"
         icon="el-icon-eleme"
       >
         {{activity.content}}
@@ -29,13 +29,16 @@ export default {
     return {
       activities: [{
         content: 'Event start',
-        timestamp: '2018-04-15'
+        timestamp: '2018-04-15',
+        size: 'normal'
       }, {
         content: 'Approved',
-        timestamp: '2018-04-13'
+        timestamp: '2018-04-13',
+        size: 'large'
       }, {
         content: 'Success',
-        timestamp: '2018-04-11'
+        timestamp: '2018-04-11',
+        size: 'normal'
       }]
     }
   }

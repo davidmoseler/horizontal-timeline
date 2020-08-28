@@ -29,5 +29,6 @@ export default {
   counter-reset: stepCount;
   display: flex;
   text-align: center;
+  align-items: center;
 }
 </style>
