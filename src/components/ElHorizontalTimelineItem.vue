@@ -1,5 +1,5 @@
 <template>
-  <div class="flexpurposes">
+  <div class="flexpurposes" :style="cssVars">
     <template v-if="placement == 'top'">
       <p v-if="!hideTimestamp">{{timestamp}}</p>
       <el-tooltip content="Tooltip">
@@ -52,6 +52,11 @@ export default {
   computed: {
     content() {
       return this.$slots.default[0].text
+    },
+    cssVars() {
+      return {
+        '--node-size': '2em'
+      }
     }
   }
 }
@@ -71,8 +76,8 @@ export default {
   background: dodgerblue;
   border-radius: 50%;
   text-align: center;
-  line-height: 2em;
-  width: 2em;
+  line-height: var(--node-size);
+  width: var(--node-size);
   z-index: 1;
 }
 .timeline-item::before{
@@ -81,7 +86,7 @@ export default {
   height: .3em;
   text-align: center;
   position: absolute;
-  top: 0.85em;
+  top: calc(var(--node-size)/2 - .15em);
   width: 100%;
   content: "";
 }

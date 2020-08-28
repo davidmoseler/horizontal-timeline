@@ -19,16 +19,15 @@ export default {
       },
       items
     )
-  },
-  mounted() {
-    console.log(this.$slots.default[0])
   }
 }
+
 </script>
 
 <style scoped>
 .timeline {
   counter-reset: stepCount;
   display: flex;
+  text-align: center;
 }
 </style>

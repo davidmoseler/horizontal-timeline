@@ -5,6 +5,7 @@
         v-for="(activity, i) in activities"
         :key="i"
         :timestamp="activity.timestamp"
+        size="normal"
         icon="el-icon-eleme"
       >
         {{activity.content}}
@@ -46,7 +47,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
