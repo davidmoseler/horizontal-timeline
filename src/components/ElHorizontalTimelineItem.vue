@@ -60,10 +60,8 @@ export default {
 <style scoped>
 .flexpurposes {
   flex-grow: 1;
-  margin: 1px;
 }
 .timeline-item {
-  background: blue;
   color: white;
   content: ' ';
   display: flex;
@@ -73,7 +71,6 @@ export default {
   text-align: right;
   justify-content: center;
   position: relative;
-  /* z-index: -1; */
 }
 .timeline-item div {
   color: white;
@@ -86,10 +83,11 @@ export default {
   text-align: center;
   top: -.85em;
   width: 2em;
+  z-index: 1;
 }
 .timeline-item::before{
   color: white;
-  background: black;
+  background: dodgerblue;
   height: .3em;
   text-align: center;
   position: absolute;
@@ -132,6 +130,8 @@ export default {
 }
 p {
   margin: 5px;
-  background-color: brown;
+}
+i {
+  position: relative;
 }
 </style>

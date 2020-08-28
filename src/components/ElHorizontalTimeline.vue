@@ -24,7 +24,6 @@ export default {
   display: flex;
   justify-content: space-around;
   font-size: 1.3em;
-  background-color: rgb(230, 171, 171);
   z-index: -2;
 }
 

@@ -5,13 +5,13 @@
         v-for="(activity, i) in activities"
         :key="i"
         :timestamp="activity.timestamp"
+        icon="el-icon-delete"
       >
         {{activity.content}}
       </el-horizontal-timeline-item>
     </el-horizontal-timeline>
   </div>
 </template>
-        <!-- icon="el-icon-delete" -->
 
 <script>
 import ElHorizontalTimeline from './components/ElHorizontalTimeline.vue'
