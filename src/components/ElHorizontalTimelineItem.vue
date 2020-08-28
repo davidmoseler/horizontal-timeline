@@ -62,13 +62,7 @@ export default {
   flex-grow: 1;
 }
 .timeline-item {
-  color: white;
-  content: ' ';
   display: flex;
-  /* height: .3em; */
-  line-height: 1em;
-  margin: 0;
-  text-align: right;
   justify-content: center;
   position: relative;
 }
@@ -76,12 +70,8 @@ export default {
   color: white;
   background: dodgerblue;
   border-radius: 50%;
-  height: 2em;
-  left: 0em;
-  right: 0em;
-  line-height: 2em;
   text-align: center;
-  top: -.85em;
+  line-height: 2em;
   width: 2em;
   z-index: 1;
 }
@@ -109,29 +99,11 @@ export default {
 .numbered-node div::before {
   content: counter(stepCount);
 }
-.timeline-item.active {
-  background-color: lightblue;
-}
-.timeline-item.active ~ .timeline-item {
-  background-color: lightblue;
-}
-.timeline-item.active ~ .timeline-item::before {
-  background-color: lightblue;
-}
-.timeline-item:last-child {
-  flex-basis: 0;
-  flex-grow: 0;
-  flex-shrink: 1;
-  right: 2em;
-}
 .timeline.highlight-active .timeline-item.active::before {
   font-size: 1.6em;
   background: maroon;
 }
 p {
-  margin: 5px;
-}
-i {
-  position: relative;
+  margin: .3em;
 }
 </style>
