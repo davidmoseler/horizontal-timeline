@@ -26,7 +26,8 @@ export default {
     "hide-timestamp": Boolean,
     "placement": {
       type: String,
-      default: 'bottom'
+      default: 'bottom',
+      validator: val => ['top', 'bottom'].includes(val)
     },
     "type": String,
     "color": {
@@ -35,7 +36,8 @@ export default {
     },
     "size": {
       type: String,
-      default: 'normal'
+      default: 'normal',
+      validator: val => ['normal', 'large'].includes(val)
     },
     "icon": String
   },
