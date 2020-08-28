@@ -1,31 +1,17 @@
 <template>
   <div class="flexpurposes" :style="cssVars">
-    <template v-if="placement == 'top'">
-      <p v-if="!hideTimestamp">{{timestamp}}</p>
-      <el-tooltip content="Tooltip">
-        <div :class="{
-          'timeline-item': true,
-          'numbered-node': icon == undefined
-        }">
-          <div>
-            <i v-if="icon" :class="[icon]" />
-          </div>
+    <p v-if="!hideTimestamp && placement == 'top'">{{timestamp}}</p>
+    <el-tooltip content="Tooltip">
+      <div :class="{
+        'timeline-item': true,
+        'numbered-node': icon == undefined
+      }">
+        <div>
+          <i v-if="icon" :class="[icon]" />
         </div>
-      </el-tooltip>
-    </template>
-    <template v-else>
-      <el-tooltip :content="content">
-        <div :class="{
-          'timeline-item': true,
-          'numbered-node': icon == undefined
-        }">
-          <div>
-            <i v-if="icon" :class="[icon]" />
-          </div>
-        </div>
-      </el-tooltip>
-      <p v-if="!hideTimestamp">{{timestamp}}</p>
-    </template>
+      </div>
+    </el-tooltip>
+    <p v-if="!hideTimestamp && placement == 'bottom'">{{timestamp}}</p>
   </div>
 </template>
 
