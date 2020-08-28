@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-if="placement == 'top'">
+  <div class="flexpurposes">
+    <template v-if="placement == 'top'">
       <p v-if="!hideTimestamp">{{timestamp}}</p>
       <el-tooltip content="Tooltip">
         <div :class="{
@@ -8,22 +8,26 @@
           'timeline-item-large': size == 'large',
           'numbered-node': icon == undefined
         }">
-          <i v-if="icon" :class="[icon]" />
+          <div>
+            <i v-if="icon" :class="[icon]" />
+          </div>
         </div>
       </el-tooltip>
-    </div>
-    <div v-else>
+    </template>
+    <template v-else>
       <el-tooltip :content="content">
         <div :class="{
           'timeline-item': size == 'normal',
           'timeline-item-large': size == 'large',
           'numbered-node': icon == undefined
         }">
-          <i v-if="icon" :class="[icon]" />
+          <div>
+            <i v-if="icon" :class="[icon]" />
+          </div>
         </div>
       </el-tooltip>
       <p v-if="!hideTimestamp">{{timestamp}}</p>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -54,20 +58,24 @@ export default {
 </script>
 
 <style scoped>
+.flexpurposes {
+  flex-grow: 1;
+  margin: 1px;
+}
 .timeline-item {
-  background: dodgerblue;
+  background: blue;
   color: white;
   content: ' ';
   display: flex;
-  flex-grow: 1;
-  height: .3em;
+  /* height: .3em; */
   line-height: 1em;
   margin: 0;
-  position: relative;
   text-align: right;
-  z-index: -1;
+  justify-content: center;
+  position: relative;
+  /* z-index: -1; */
 }
-.timeline-item::before {
+.timeline-item div {
   color: white;
   background: dodgerblue;
   border-radius: 50%;
@@ -75,13 +83,32 @@ export default {
   left: 0em;
   right: 0em;
   line-height: 2em;
-  position: absolute;
   text-align: center;
   top: -.85em;
   width: 2em;
 }
-.numbered-node::before {
+.timeline-item::before{
+  color: white;
+  background: black;
+  height: .3em;
+  text-align: center;
+  position: absolute;
+  top: 0.85em;
+  width: 100%;
+  content: "";
+}
+.flexpurposes:first-child .timeline-item::before {
+  width: 50%;
+  left: 50%;
+}
+.flexpurposes:last-child .timeline-item::before {
+  width: 50%;
+  right: 50%;
+}
+.numbered-node div {
   counter-increment: stepCount;
+}
+.numbered-node div::before {
   content: counter(stepCount);
 }
 .timeline-item.active {
@@ -102,5 +129,9 @@ export default {
 .timeline.highlight-active .timeline-item.active::before {
   font-size: 1.6em;
   background: maroon;
+}
+p {
+  margin: 5px;
+  background-color: brown;
 }
 </style>
