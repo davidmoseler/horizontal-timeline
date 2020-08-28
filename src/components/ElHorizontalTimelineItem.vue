@@ -40,10 +40,13 @@ export default {
     "hide-timestamp": Boolean,
     "placement": String,
     "type": String,
-    "color": String,
+    "color": {
+      type: String,
+      default: 'lightgrey'
+    },
     "size": {
       type: String,
-      default : 'normal'
+      default: 'normal'
     },
     "icon": String
   },
@@ -59,7 +62,8 @@ export default {
         nodeSize = '3em'
       }
       return {
-        '--node-size': nodeSize
+        '--node-size': nodeSize,
+        '--node-color': this.color
       }
     }
   }
@@ -77,7 +81,7 @@ export default {
 }
 .timeline-item div {
   color: white;
-  background: dodgerblue;
+  background: var(--node-color);
   border-radius: 50%;
   text-align: center;
   line-height: var(--node-size);
@@ -86,7 +90,7 @@ export default {
 }
 .timeline-item::before{
   color: white;
-  background: dodgerblue;
+  background: lightgrey;
   height: .3em;
   text-align: center;
   position: absolute;
@@ -114,5 +118,7 @@ export default {
 }
 p {
   margin: .3em;
+  color: lightgrey;
+  font-weight: bold;
 }
 </style>
